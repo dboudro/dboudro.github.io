@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  button.remove {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 4px;
+    border: none;
+  }
+  button.remove:hover {
+    cursor: pointer;
+  }
+  button.add {
+    margin-top: 10px;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 4px;
+    border: none;
+  }
+  button.add:hover {
+    cursor: pointer;
+  }
+  li {
+    margin-top: 10px;
+  }
+  </style>
+</head>
+<body>
+  <ul>
+    <li> ya ya ya 1 <button class="remove" onclick="remove()">-</button></li>
+    <li> ya ya ya 2  <button class="remove" onclick="remove()">-</button> </li>
+    <li> ya ya ya 3 <button class="remove" onclick="remove()">-</button></li>
+    <li><button class="remove" onclick="remove()">-</button> ya ya ya 4 </li>
+    <button class="add" onclick="add()">+ </button>
+  </ul>
+
+  </ul>
+  <script>
+  function remove () {
+  //
+  event.target.parentNode.style.display = "none";
+  }
+  function add () {
+    var list = event.target.parentNode;
+    console.log(list);
+    var linkName = document.createElement('input');
+    linkName.value = "linkname";
+    list.appendChild(linkName);
+  }
+  </script>
+</body>
+
+
+</html>
