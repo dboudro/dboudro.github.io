@@ -2,8 +2,10 @@
 layout: default
 ---
 <img src="img/kandinsky.jpg">
+<h2 id="xloc">xloc</h2>
+<h2 id="yloc">yloc</h2>
 <br>
-<svg width="100%" height="1000" border="1px solid black">
+<svg width="100%" height="520" border="1px solid black">
   <rect x="0px" y="0px" width="1300" height="520" fill="#f0eab6" />
   <!-- white circle black stroke left-->
   <circle cx="120" cy="320" r="46" stroke="#0a0a0a" stroke-width="3" fill="#f4f2e4" />
@@ -60,9 +62,29 @@ layout: default
     <line x1="560" y1="120" x2="680" y2="135" stroke="#0a0a0a" stroke-width="3"  />
     <line x1="680" y1="135" x2="620" y2="95" stroke="#0a0a0a" stroke-width="3"  />
 
-    <circle cx="570" cy="180" r="10" stroke="#7a8d73" stroke-width="2" fill="#d9b551" />
+    <circle cx="570" cy="180" r="10" stroke="#cb9039" stroke-width="2" fill="#d9b551" />
+
+    <circle cx="710" cy="240" r="50" stroke="#545d56" stroke-width="2" fill="#62a0a2" />
+    <polygon points="600,200 570,240 710,250 650,420 600,200 " fill-opacity=".9"style="fill:#595691;stroke:black;stroke-width:2" />
+
+    <line x1="600" y1="230" x2="630" y2="115" stroke="#0a0a0a" stroke-width="2"  />
+    <line x1="630" y1="115" x2="750" y2="65" stroke="#0a0a0a" stroke-width="2"  />
+    <line x1="646" y1="110" x2="712" y2="83" stroke="#8aaf44" stroke-width="4"  />
+    <!-- diagonal multi colored rectangle -->
+    <polygon points="760,275 764,280 490,465 486,460" stroke="black" stroke-width="1" fill="none" />
+    <line x1="761" y1="277" x2="710" y2="313" fill-opacity==".5" fill="red" stroke="#8aaf44" stroke-width="5"  />
+    <polygon points="706,311 710,315 690,327 690,323" fill="black"/>
+
+    <line x1="630" y1="422" x2="933" y2="422" stroke="black" stroke-width="2"  />
+    <!-- blue square -->
+    <polygon points="626,429 626,442 614,442 614,429" fill="#62a0a2" stroke="black" stroke-width="2"/>
+    <!-- white triangle -->
+    <polygon points="721,422 834,108 850,422" fill="white" stroke="black" stroke-width="2"/>
 
 </svg>
+
+
+
 
 <script>
 /* * * * * * * * * * * * QUESTIONS * * * * * * * * * * * *
@@ -75,7 +97,19 @@ Q; rotated circle
 
 
 <!-- refresh the page every 3 sec for ease of development -->
- <meta http-equiv="refresh" content="4" >
+  <meta http-equiv="refresh" content="10" >
+
+<script>
+document.addEventListener("mousemove", function(event) {
+var xloc = document.getElementById('xloc')
+xloc.innerHTML = "x: " + (event.clientX - 25);
+
+var yloc = document.getElementById('yloc')
+yloc.innerHTML = "y: " + (event.clientY - 535);
+
+});
+
+</script>
 
 
 <script>
