@@ -5,6 +5,7 @@ layout: default
 <h2 id="xloc">xloc</h2>
 <h2 id="yloc">yloc</h2>
 <br>
+<button onclick="changeColors()"> randomize colors </button>
 <svg width="100%" height="520" border="1px solid black">
   <rect x="0px" y="0px" width="1300" height="520" fill="#f0eab6" />
   <!-- white circle black stroke left-->
@@ -133,7 +134,7 @@ layout: default
 
     <line x1="730" y1="135" x2="790" y2="230" stroke="#5c8651" stroke-width="6"  />
     <line x1="767" y1="293" x2="707" y2="334" stroke="#5c8651" stroke-width="6"  />
-    
+
     <polygon points="880,378 880,387 872,387 872,378" fill="#000000" stroke="black" stroke-width="1"/>
 
 </svg>
@@ -152,7 +153,7 @@ Q; rotated circle
 
 
 <!-- refresh the page every 3 sec for ease of development -->
-  <meta http-equiv="refresh" content="20" >
+  <!-- <meta http-equiv="refresh" content="20" > -->
 
 <script>
 document.addEventListener("mousemove", function(event) {
@@ -167,7 +168,28 @@ yloc.innerHTML = "y: " + (event.clientY - 535);
 </script>
 
 
+
 <script>
+  var svgCanvas = document.getElementsByTagName('svg')[0];
+/* change the colors of each item in the drawing when you click the button */
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function changeColors() {
+  console.log('noLoop');
+  for (i = 0; i < svgCanvas.children.length; i++) {
+  svgCanvas.children[i].setAttribute('fill', getRandomColor());
+  }
+
+};
+
 /* script that generates a grid to make drawing SVG's easier */
 var kandinsky = document.getElementsByTagName('svg')[0];
   for (i = 0; i < 13; i++) {
