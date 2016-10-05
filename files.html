@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<script>
+  d3.text("data/textData.txt", function(error, file) {
+    console.log(error, file);
+  });
+
+  d3.csv("data/csvData.csv", function(error, file) {
+    console.log(error, file);
+  });
+
+  d3.json("data/jsonData.json", function(error, file) {
+    console.log(error, file);
+  });
+  console.log('before the file is loaded')
+</script>
