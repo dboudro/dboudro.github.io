@@ -1,0 +1,53 @@
+---
+layout: default
+---
+<svg width="800" height="600"></svg>
+<script>
+
+  var draw = function(data) {
+
+    var svg = d3.select("svg");
+    var circles = svg.selectAll("circle").data(data);
+
+    var radius = d3.scaleLinear()
+      .domain([0, d3.max(data, function(d, i ) { return d.values.length })])
+      .range([2, 100]);
+
+
+    circles.enter().append("circle")
+      .attr('cy', 110)
+      .attr('cx', function(d, i) { return 110 + (200 * i)})
+      .attr('r', function(d, i) { return radius(d.values.length)})
+      .attr("fill", "green");
+
+  };
+
+
+  d3.csv("data/nathan.csv", function(error, data) {
+    console.log(error, data);
+
+    data = data.filter(function(d, i) {
+      return i != 0;
+    });
+
+  var nestedData = d3.nest()
+    // break data set into objects according to gender MAle obj, female obj
+    .key(function(d, i) {
+      return d.Gender;
+    })
+    // break male object into various objects depending on their income
+    // .key(function(d, i) {
+    //   return d["Household Income"];
+    // })
+    .entries(data);
+
+    // nestedData = nestedData.filter(function(d, i) {
+    //   return d.key != "";
+    // });
+
+    console.log(nestedData);
+
+    draw(nestedData);
+
+  });
+</script>
