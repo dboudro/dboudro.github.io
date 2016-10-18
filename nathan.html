@@ -26,6 +26,8 @@ layout: default
   d3.csv("data/nathan.csv", function(error, data) {
     console.log(error, data);
 
+
+
     data = data.filter(function(d, i) {
       return i != 0;
     });
@@ -49,5 +51,9 @@ layout: default
 
     draw(nestedData);
 
+  });
+
+  d3.csv("data/plantData.csv", function(error, data) {
+    console.log(error, data);
   });
 </script>
