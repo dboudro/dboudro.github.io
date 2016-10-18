@@ -2,7 +2,12 @@
 layout: default
 ---
 <svg width="800" height="600"></svg>
+
+<label for="fader">Volume</label>
+<input type="range" min="0" max="5" value="3" id="slider">
 <script>
+// get the current value of the slider.
+document.getElementById('slider').value;
 
   var draw = function(data) {
 
@@ -56,4 +61,12 @@ layout: default
   d3.csv("data/plantData.csv", function(error, data) {
     console.log(error, data);
   });
+
+  // Turns anything that can be a number into a number
+  num = parseFloat(d[key]);
+  if (!isNan(num)) {
+    d[key] = num;
+  }
+
+
 </script>
