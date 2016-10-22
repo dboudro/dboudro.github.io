@@ -1,17 +1,31 @@
 import wikipedia
+from bs4 import BeautifulSoup
 
-print "Oregano Wikipedia Page Object"
+oregano = wikipedia.page("Oregano")
 
-wikipedia.search('plants in North America')
+soup = BeautifulSoup(oregano.html(), 'html.parser')
 
+print(soup.find(title='Taxonomy (biology)'))
 
-oregano = wikipedia.WikipediaPage("Oregano")
-oregano = wikipedia.WikipediaPage("test")
-
-oregano.html()
-
+print(soup.find_all("span", class_="order"))
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# print "Oregano Wikipedia Page Object"
 
 # print " "
 # print "100 plant searches"
