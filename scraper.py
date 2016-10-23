@@ -1,13 +1,56 @@
 import wikipedia
 from bs4 import BeautifulSoup
 
+
+
+
+
 oregano = wikipedia.page("Oregano")
+
 
 soup = BeautifulSoup(oregano.html(), 'html.parser')
 
-print(soup.find(title='Taxonomy (biology)'))
 
-print(soup.find_all("span", class_="order"))
+taxonomy = soup.find(title='Taxonomy (biology)')
+
+#order
+orderSpan = soup.find("span", class_="order")
+orderAnchor = orderSpan.find_all()
+order = orderAnchor[0].contents[0];
+
+#family
+familySpan = soup.find("span", class_="family")
+familyAnchor = familySpan.find_all()
+family = familyAnchor[0].contents[0];
+
+#genus
+genusSpan = soup.find("span", class_="genus")
+genusAnchor = genusSpan.find_all()
+genus = genusAnchor[0].contents[0].contents[0]
+
+#species
+speciesSpan = soup.find("span", class_="species")
+speciesAnchor = speciesSpan.find_all()
+species = speciesAnchor[0].contents[0].contents[0];
+
+
+
+# scientific name
+# family = soup.find("span", class_="family")
+# familyAnchor = familySpan.find_all()
+# family = familyAnchor[0].contents[0];
+
+
+
+##### printing
+
+print ""
+print ""
+print 'order: ' + order
+print 'family: ' + family
+print 'genus: ' + genus
+print 'species: ' + species
+
 
 
 
