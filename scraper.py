@@ -31,15 +31,19 @@ genus = genusAnchor[0].contents[0].contents[0]
 #species
 speciesSpan = soup.find("span", class_="species")
 speciesAnchor = speciesSpan.find_all()
-species = speciesAnchor[0].contents[0].contents[0];
+species = speciesAnchor[0].contents[0].contents[0]
 
 
 
 # scientific name
-# family = soup.find("span", class_="family")
-# familyAnchor = familySpan.find_all()
-# family = familyAnchor[0].contents[0];
+scientificSpan = soup.find("span", class_="binomial")
+scientificAnchor = scientificSpan.find_all()
+scientific = scientificAnchor[0].contents[0]
 
+
+#common name (might not scale)
+
+common = soup.find_all('b')[2].contents[0]
 
 
 ##### printing
@@ -50,6 +54,9 @@ print 'order: ' + order
 print 'family: ' + family
 print 'genus: ' + genus
 print 'species: ' + species
+print 'scientific name: '  + scientific
+print 'common name: ' + common
+
 
 
 
