@@ -15,11 +15,7 @@ for li in items:
 
 def loadPage(plant):
     print "scraping " + str(plant)
-    try:
-        plantPage = wikipedia.page(plant)
-    except wikipedia.exceptions.DisambiguationError:
-        print 'wikipedia.exceptions.DisambiguationError'
-
+    plantPage = wikipedia.page(plant)
     soup = BeautifulSoup(plantPage.html(), 'html.parser')
     taxonomy = soup.find(title='Taxonomy (biology)')
 
