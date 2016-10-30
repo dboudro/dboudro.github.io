@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+.col {
+  width: 15.35vw;
+  height: 100vh;
+  margin-right: 1vw;
+  border: 1px solid blue;
+  float: left;
+  z-index: 1;
+}
+.col-end {
+  padding-right: none;
+}
+#plant-title-container {
+  width: 15.35vw;
+  display: inline-block;
+  position: relative;
+  z-index: 4;
+  text-align: right;
+
+}
+
+#content-container {
+position: relative;
+}
+
+</style>
+<body>
+  <div id="content-container">
+  <div id="col-container">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col col-end"></div>
+  </div>
+
+  <div id="plant-title-container">
+  <h1> Oregano </h1>
+  <h2> Origanum Vulgare </h2>
+  </div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="js/dendrogram.js"></script
