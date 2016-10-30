@@ -10,12 +10,16 @@ items = soup.find_all('li')
 plants = []
 for li in items:
     if li.find('i'):
-         plants.append(li.find('a').contents[0])
+         plants.append(li.find('a'))
 
 
 def loadPage(plant):
     print "scraping " + str(plant)
-    plantPage = wikipedia.page(plant)
+    try:
+        plantPage = wikipedia.page(plant)
+    except wikipedia.exceptions.DisambiguationError:
+        print 'wikipedia.exceptions.DisambiguationError'
+
     soup = BeautifulSoup(plantPage.html(), 'html.parser')
     taxonomy = soup.find(title='Taxonomy (biology)')
 
