@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
+@font-face {
+    font-family: bebas;
+    src: url(font/BebasNeueBook.otf);
+}
+@font-face {
+    font-family: bebas-bold;
+    src: url(font/BebasNeueBold.ttf);
+}
+@font-face {
+    font-family: courier;
+    src: url(font/Courier.dfont);
+}
 .node {
   cursor: pointer;
 }
@@ -27,7 +38,6 @@
   margin-right: 1vw;
   border: 1px solid blue;
   float: left;
-  z-index: 1;
 }
 .col-end {
   padding-right: none;
@@ -35,14 +45,48 @@
 #plant-title-container {
   width: 15.35vw;
   display: inline-block;
-  position: relative;
-  z-index: 4;
   text-align: right;
-
+  float: left;
+}
+#pic-container {
+  margin-left: 1vw;
+  border: 1px solid red;
+  display: table;
+  width: 30vw;
+  float: left;
+}
+#pic-container p, h2 {
+  display: inline;
+}
+#argemone {
+  width: 30vw;
+  display: block;
 }
 
 #content-container {
 position: relative;
+}
+
+h1 {
+  font-family: bebas-bold;
+  font-size: 18px;
+}
+
+h2 {
+  font-family: bebas;
+  font-size: 18px;
+  border: 1px solid purple;
+}
+
+p {
+  font-family: courier;
+  font-size: 10px;
+}
+#soil-ph {
+  float: right;
+}
+#soil-ph-title {
+  float: right;
 }
 
 </style>
@@ -61,5 +105,20 @@ position: relative;
   <h1> Oregano </h1>
   <h2> Origanum Vulgare </h2>
   </div>
+
+</div>
+<div id="pic-container">
+  <img src="img/argemone.jpg" id="argemone"/>
+  <h2> Height </h2>
+  <p> 20–80 cm (7.9–31.5 in) tall </p>
+  <h2 id="soil-ph-title"> SOIL PH </h2>
+  <img src="http://placehold.it/100x30" id="soil-ph"/>
+  <br>
+  <h2>Growing Info </h2>
+  <p>Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Proin ut mattis nibh. Curabitur ut
+felis eu libero commodo mollis nec et mauris. Prae-
+sent lobortis tincidunt lorem, ut fermentum ligula </p>
+</div>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="js/dendrogram.js"></script
