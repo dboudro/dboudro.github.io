@@ -6,11 +6,14 @@ from bs4 import BeautifulSoup
 allPlants = wikipedia.page("List_of_garden_plants")
 soup = BeautifulSoup(allPlants.html(), 'html.parser')
 
+## if the link is red
+## if the link title contains the word page does not exist
+
 items = soup.find_all('li')
 plants = []
 for li in items:
     if li.find('i'):
-         plants.append(li.find('a'))
+        plants.append(li.find('a')['title'])
 
 
 def loadPage(plant):
@@ -31,8 +34,11 @@ def loadPage(plant):
 
     #genus
     genusSpan = soup.find("span", class_="genus")
-    genusAnchor = genusSpan.find_all()
-    genus = genusAnchor[0].contents[0].contents[0]
+    if genusSpan:
+        genusAnchor = genusSpan.find_all()
+        genus = genusAnchor[0].contents[0].contents[0]
+    else:
+        genus = 'none'
 
     #species
     speciesSpan = soup.find("span", class_="species")
