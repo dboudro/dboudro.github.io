@@ -1,6 +1,7 @@
 import wikipedia
 import csv
 from bs4 import BeautifulSoup
+import re
 
 
 allPlants = wikipedia.page("List_of_garden_plants")
@@ -12,31 +13,42 @@ soup = BeautifulSoup(allPlants.html(), 'html.parser')
 items = soup.find_all('li')
 plants = []
 for li in items:
-    if li.find('i'):
+    if li.find('i') and re.search("^\S*$", li.find('a')['title']):
         plants.append(li.find('a')['title'])
 
 
 def loadPage(plant):
-    print "scraping " + str(plant)
+    print "scraping " + str(plant) #+ str(plant.index)
     plantPage = wikipedia.page(plant)
     soup = BeautifulSoup(plantPage.html(), 'html.parser')
     taxonomy = soup.find(title='Taxonomy (biology)')
 
     #order
     orderSpan = soup.find("span", class_="order")
-    orderAnchor = orderSpan.find_all()
-    order = orderAnchor[0].contents[0];
+    if orderSpan:
+        orderAnchor = orderSpan.find_all()
+        order = orderAnchor[0].contents[0];
+    else:
+        order = 'none'
 
     #family
     familySpan = soup.find("span", class_="family")
-    familyAnchor = familySpan.find_all()
-    family = familyAnchor[0].contents[0];
+    if familySpan:
+        familyAnchor = familySpan.find_all()
+        family = familyAnchor[0].contents[0];
+    else:
+        family = 'none'
 
     #genus
     genusSpan = soup.find("span", class_="genus")
     if genusSpan:
         genusAnchor = genusSpan.find_all()
-        genus = genusAnchor[0].contents[0].contents[0]
+        if genusAnchor[0].contents[0].contents[0]:
+            genus = genusAnchor[0].contents[0].contents[0]
+        elif genusAnchor[0].contents[0]:
+            genus = genusAnchor[0].contents[0];
+        else:
+            genus = 'none'
     else:
         genus = 'none'
 
@@ -55,7 +67,7 @@ def loadPage(plant):
         scientific = scientificAnchor[0].contents[0]
 
     #common name (might not scale)
-    common = soup.find_all('b')[2].contents[0]
+    common = soup.find('th')
 
     return ['myid', plant, genus]
 
