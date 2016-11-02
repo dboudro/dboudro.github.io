@@ -19,7 +19,7 @@ for li in items:
 
 
 def loadPage(plant):
-    if plant == 'Bursaria':
+    if plant == 'Bursaria' or 'carnegie':
         print 'skipped'
         return 'skipped'
     else:
@@ -112,7 +112,7 @@ csvData.append(['id', 'name', 'genus'])
 skipplants = ['Bursaria']
 
 # for testing
-plants = [ 'Allium', 'Allosyncarpia']
+#plants = [ 'Allium', 'Allosyncarpia']
 
 for plant in plants:
     csvData.append(loadPage(plant))
