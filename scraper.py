@@ -31,9 +31,9 @@ def loadPage(plant):
     if orderSpan:
         orderAnchor = orderSpan.find('a')
         orderItalic = orderSpan.find('i')
-        if orderAnchor:
+        if orderAnchor.contents:
             order = orderAnchor.contents[0];
-        elif orderItalic:
+        elif orderItalic.contents:
             order = orderItalic.contents[0];
         else:
             genus = 'none'
@@ -45,9 +45,9 @@ def loadPage(plant):
     if familySpan:
         familyAnchor = familySpan.find('a')
         familyItalic = familySpan.find('i')
-        if familyAnchor:
+        if familyAnchor.contents:
             family = familyAnchor.contents[0]
-        elif familyItalic:
+        elif familyItalic.contents:
             family = familyItalic.contents[0]
         else:
             family = 'none'
@@ -59,9 +59,10 @@ def loadPage(plant):
     if genusSpan:
         genusAnchor = genusSpan.find('a')
         genusItalic = genusSpan.find('i')
-        if genusAnchor:
+        if genusAnchor.contents:
             genus = genusAnchor.contents[0]
-        elif genusItalic:
+        elif genusItalic.contents:
+            print genusItalic
             genus = genusItalic.contents[0]
         else:
             genus = 'none'
@@ -73,9 +74,9 @@ def loadPage(plant):
     if speciesSpan:
         speciesAnchor = speciesSpan.find('a')
         speciesItalic = speciesSpan.find('i')
-        if speciesAnchor:
+        if speciesAnchor.contents:
             species = speciesAnchor.contents[0]
-        elif speciesItalic:
+        elif speciesItalic.contents:
             species = speciesItalic.contents[0]
         else:
             species = 'none'
@@ -86,9 +87,10 @@ def loadPage(plant):
     scientificSpan = soup.find("span", class_="binomial")
     if scientificSpan:
         scientificAnchor = scientificSpan.find('a')
-        if scientificAnchor:
+        scientificItalic = scientificSpan.find('i')
+        if scientificAnchor.contents:
             scientific = scientificAnchor.contents[0]
-        elif scientificItalic:
+        elif scientificItalic.contents:
             scientific = scientificItalic.contents[0]
         else:
             scientific = 'none'
@@ -104,7 +106,9 @@ csvData = []
 #header
 csvData.append(['id', 'name', 'genus'])
 
-plants = ['Allium', 'Allosyncarpia']
+# for testing
+plants = ['Bursaria', 'Allium', 'Allosyncarpia']
+
 for plant in plants:
     csvData.append(loadPage(plant))
     print 'loaded ' + str(plant)
