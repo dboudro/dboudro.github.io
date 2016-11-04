@@ -102,7 +102,7 @@ def loadPage(plant):
 
         #common name (might not scale)
         common = soup.find('th')
-        return ['myid', plant, genus]
+        return ['myid', plant.encode('utf-8'), genus.encode('utf-8')]
 
 csvData = []
 #header
