@@ -30,6 +30,18 @@ def loadPage(plant):
         soup = BeautifulSoup(plantPage.html(), 'html.parser')
         taxonomy = soup.find(title='Taxonomy (biology)')
 
+        # intro paragraph
+        bodyContent = soup.find('div', class_='mw-body-content')
+        if bodyContent:
+            paragraphTag = bodyContent.find("p")
+            if paragraphTag:
+                paragraph = paragraphTag.contents[0]
+            else:
+                paragraph = 'no paragraph in the body content'
+        else:
+            paragraph = 'no body content div'
+
+
         # image
         imageSpan = soup.find("a", class_="image")
         if imageSpan:
@@ -40,6 +52,7 @@ def loadPage(plant):
                 image = 'none'
         else:
             image = 'none'
+
 
         #order
         orderSpan = soup.find("span", class_="order")
@@ -117,11 +130,13 @@ def loadPage(plant):
 
         #common name (might not scale)
         common = soup.find('th')
-        return ['myid', plant.encode('utf-8'), scientific.encode('utf-8'), order.encode('utf-8'), family.encode('utf-8'), genus.encode('utf-8'), species.encode('utf-8'), image.encode('utf-8')]
+        return ['myid', plant.encode('utf-8'), scientific.encode('utf-8'),
+        order.encode('utf-8'), family.encode('utf-8'), genus.encode('utf-8'),
+        species.encode('utf-8'), image.encode('utf-8'),paragraph.encode('utf-8')]
 
 csvData = []
 #header
-csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image'])
+csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image', 'paragraph'])
 
 # list of plants to skip due to irregular formatting
 skipplants = ['Bursaria']
