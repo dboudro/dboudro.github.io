@@ -30,15 +30,26 @@ def loadPage(plant):
         soup = BeautifulSoup(plantPage.html(), 'html.parser')
         taxonomy = soup.find(title='Taxonomy (biology)')
 
+        # image
+        imageSpan = soup.find("a", class_="image")
+        if imageSpan:
+            imageTag = imageSpan.find('img')
+            if imageTag:
+                image = 'https:' + imageTag['src']
+            else:
+                image = 'none'
+        else:
+            image = 'none'
+
         #order
         orderSpan = soup.find("span", class_="order")
         if orderSpan:
             orderAnchor = orderSpan.find('a')
             orderItalic = orderSpan.find('i')
             if orderAnchor:
-                order = orderAnchor.contents[0];
+                order = orderAnchor.contents[0]
             elif orderItalic:
-                order = orderItalic.contents[0];
+                order = orderItalic.contents[0]
             else:
                 genus = 'none'
         else:
@@ -106,11 +117,11 @@ def loadPage(plant):
 
         #common name (might not scale)
         common = soup.find('th')
-        return ['myid', plant.encode('utf-8'), scientific.encode('utf-8'), order.encode('utf-8'), family.encode('utf-8'), genus.encode('utf-8'), species.encode('utf-8')]
+        return ['myid', plant.encode('utf-8'), scientific.encode('utf-8'), order.encode('utf-8'), family.encode('utf-8'), genus.encode('utf-8'), species.encode('utf-8'), image.encode('utf-8')]
 
 csvData = []
 #header
-csvData.append(['id', 'name', 'order', 'family', 'genus', 'species'])
+csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image'])
 
 # list of plants to skip due to irregular formatting
 skipplants = ['Bursaria']
@@ -125,61 +136,3 @@ for plant in plants:
 with open('plantOutput.csv', 'wb') as f:
     wtr = csv.writer(f, delimiter= ',')
     wtr.writerows(csvData)
-
-
-##### printing
-# print ''
-# print 'common name: ' + common
-# print 'scientific name: '  + scientific
-# print 'order: ' + order
-# print 'family: ' + family
-# print 'genus: ' + genus
-# print 'species: ' + species
-# print ''
-# print plant.summary
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# print "Oregano Wikipedia Page Object"
-
-# print " "
-# print "100 plant searches"
-# print wikipedia.search("Plants", results=100)
-# print " "
-# print "Lavender summary"
-# print wikipedia.summary("lavender")
-# print " "
-
-# print oregano
-# print " "
-# print "Oregano categories"
-# print oregano.categories
-# print " "
-# print "Oregano Sections"
-# print oregano.sections
-
-
-
-
-# print " "
-# print " "
-# print " "
-# print "Oregano full html page"
-# print oregano.html()
