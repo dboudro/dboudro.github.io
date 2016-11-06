@@ -63,10 +63,14 @@ def loadPage(plant):
         if genusSpan:
             genusAnchor = genusSpan.find('a')
             genusItalic = genusSpan.find('i')
+            genusBold = genusSpan.find('b')
             if genusAnchor:
                 genus = genusAnchor.contents[0]
             elif genusItalic:
-                genus = genusItalic.contents[0]
+                if genusBold:
+                    genus = genusBold.contents[0]
+                else:
+                    genus = genusItalic.contents[0]
             else:
                 genus = 'none'
         else:
@@ -102,17 +106,17 @@ def loadPage(plant):
 
         #common name (might not scale)
         common = soup.find('th')
-        return ['myid', plant.encode('utf-8'), genus.encode('utf-8')]
+        return ['myid', plant.encode('utf-8'), scientific.encode('utf-8'), order.encode('utf-8'), family.encode('utf-8'), genus.encode('utf-8'), species.encode('utf-8')]
 
 csvData = []
 #header
-csvData.append(['id', 'name', 'genus'])
+csvData.append(['id', 'name', 'order', 'family', 'genus', 'species'])
 
 # list of plants to skip due to irregular formatting
 skipplants = ['Bursaria']
 
 # for testing
-# plants = [ 'Sinowilsonia', 'Sisyrinchium', 'Allium', 'Allosyncarpia', 'Ledum' , ]
+plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
 
 for plant in plants:
     csvData.append(loadPage(plant))
