@@ -32,50 +32,21 @@
   stroke: #ccc;
   stroke-width: 1.5px;
 }
-
-#plant-title-container {
-  width: 15.35vw;
-  display: inline-block;
-  text-align: right;
-  float: left;
-}
-#left-page-container {
-  margin-left: 1vw;
-  border: 0px solid red;
-  display: table;
-  width: 40vw;
-  float: left;
-}
-#right-page-container {
-  margin-left: 16px;
-  border: 3px solid green;
-  display: table;
-  width: 31.5vw;
-  float: left;
-}
-#pic-container p, h2 {
-  display: inline;
-}
-#argemone {
-  width: 40vw;
-  display: block;
-  padding-bottom: 8px;
-}
-
-#content-container {
-position: relative;
+body {
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
   font-family: bebas-bold;
-  font-size: 24px;
+  font-size: 18px;
   margin: 0;
   padding: 0 0 4px 0;
 }
 
 h2 {
   font-family: bebas;
-  font-size: 24px;
+  font-size: 18px;
   border: 0px solid purple;
   margin: 0;
   padding: 0 0 8px 0;
@@ -85,10 +56,50 @@ p {
   font-family: courier;
   font-size: 12px;
 }
+#dendrogram-container {
+  width: 51vw;
+  height: 500px;
+  background-color: #FFF;
+  margin-left: -4vw;
+  border: 0px solid red;
+}
+#content-container {
+position: relative;
+}
+
 #soil-ph-container {
   float: right;
-
 }
+#argemone {
+  width: 30vw;
+  display: block;
+  padding-bottom: 8px;
+  margin: 10vh auto;
+}
+
+#left-page-container {
+  margin-left: 1vw;
+  margin-top: 1vw;
+  border: 0px solid green;
+  display: table;
+  width: 48.25vw;
+  float: left;
+  text-align: center;
+  height: 99vh;
+}
+#right-page-container {
+  margin-left: 1vw;
+  margin-top: 1vw;
+  border: 0px solid green;
+  display: table;
+  width: 48.25vw;
+  float: left;
+}
+
+#pic-container p, h2 {
+  display: inline;
+}
+
 #soil-ph-title {
   padding-right: 8px;
 }
@@ -96,40 +107,22 @@ p {
   float: right;
 }
 
-#dendrogram-container {
-  width: 30vw;
-  height: 500px;
-  background-color: #FFF;
-  margin-left: -5vw;
-  border: 0px solid red;
-}
+
 
 
 
 </style>
 <body>
   <div id="content-container">
-  <div id="plant-title-container">
-  <h1> Oregano </h1>
-  <h2> Origanum Vulgare </h2>
-  </div>
 
 </div>
 <div id="left-page-container">
   <img src="img/argemone.jpg" id="argemone"/>
-  <h2> Height </h2>
-  <p> 20–80 cm (7.9–31.5 in) tall </p>
-  <div id="soil-ph-container">
-  <h2 id="soil-ph-title"> SOIL PH </h2>
-  <img src="http://placehold.it/100x30" id="soil-ph"/>
+  <h1> Oregano </h1>
+  <h2> Origanum Vulgare </h2>
+
 </div>
-  <br>
-  <h2>Growing Info </h2>
-  <p>Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Proin ut mattis nibh. Curabitur ut
-felis eu libero commodo mollis nec et mauris. Prae-
-sent lobortis tincidunt lorem, ut fermentum ligula </p>
-</div>
+
 <div id="right-page-container">
 <h2> DESCRIPTION </h2>
 <p> Oregano (scientific name Origanum vulgare) is a common species of Origanum, a genus of the mint family (Lamiaceae). It is native to temperate western and southwestern Eurasia and the Mediterranean region.
@@ -138,12 +131,16 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 </p>
 <h2> TAXONOMY</h2>
 <div id="dendrogram-container"> </div>
-<h2> REFERENCES </h2>
-<ul>
-  <li> source 1</li>
-  <li> source 2</li>
-  <li> source 3</li>
-    </ul>
+<h2>Growing Info </h2>
+<p>Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Proin ut mattis nibh. Curabitur ut
+felis eu libero commodo mollis nec et mauris. Prae-
+sent lobortis tincidunt lorem, ut fermentum ligula </p>
+<h2> Height </h2>
+<p> 20–80 cm (7.9–31.5 in) tall </p>
+<div id="soil-ph-container">
+<h2 id="soil-ph-title"> SOIL PH </h2>
+<img src="http://placehold.it/100x30" id="soil-ph"/>
 </div>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="dendrogram.js"></script>
