@@ -64,7 +64,7 @@ def loadPage(plant):
             elif orderItalic:
                 order = orderItalic.contents[0]
             else:
-                genus = 'none'
+                order = 'none'
         else:
             order = 'none'
 
