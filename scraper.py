@@ -39,7 +39,7 @@ def loadPage(plant):
             else:
                 paragraph = 'no paragraph in the body content'
         else:
-            paragraph = 'no body content div'
+            paragraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam placerat arcu eget interdum mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam at bibendum urna, vitae venenatis turpis. Curabitur semper sem vitae lacinia hendrerit. '
 
 
         # image
