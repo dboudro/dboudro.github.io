@@ -142,7 +142,7 @@ csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image', 'p
 skipplants = ['Bursaria']
 
 # for testing
-plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
+#plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
 
 for plant in plants:
     csvData.append(loadPage(plant))
