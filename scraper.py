@@ -19,7 +19,8 @@ for li in items:
 
 
 def loadPage(plant):
-    if plant == 'Bursaria' or plant == 'Carnegiea' or plant == 'Hohenbergiopsis' or plant == 'Ledum' or plant == 'Rochea' or plant == 'Sollya' or plant == 'Wigginsia' or plant == 'Borago' or plant == 'Bracteantha' or plant == 'Dizygotheca':
+    if plant == 'Bursaria' or plant == 'Carnegiea' or plant == 'Hohenbergiopsis' or plant == 'Ledum' or plant == 'Rochea' or plant == 'Sollya' or plant == 'Wigginsia' or plant == 'Borago' or plant == 'Bracteantha'
+    or plant == 'Dizygotheca' or plant == 'Homeria' or plant == 'Lemboglossum':
         print 'skipped'
         return 'skipped'
     else:
