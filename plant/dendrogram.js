@@ -6,15 +6,11 @@ var i = 0,
     duration = 750,
     root;
 
-var tree = d3.tree()
+var tree = d3.layout.tree()
     .size([height, width]);
 
-
-    var diagonal = d3.line()
-        .x(function(d) { return d.x; })
-        .y(function(d) { return d.y; })
-        .curve(d3.curveLinear);
-
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.y, d.x]; });
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.right + margin.left)
