@@ -19,7 +19,7 @@ for li in items:
 
 
 def loadPage(plant):
-    if plant == 'Bursaria' or plant == 'Carnegiea' or plant == 'Hohenbergiopsis' or plant == 'Ledum' or plant == 'Rochea' or plant == 'Sollya' or plant == 'Wigginsia':
+    if plant == 'Bursaria' or plant == 'Carnegiea' or plant == 'Hohenbergiopsis' or plant == 'Ledum' or plant == 'Rochea' or plant == 'Sollya' or plant == 'Wigginsia' or plant == 'Borago' or plant == 'Bracteantha' or plant == 'Dizygotheca' or plant == 'Homeria' or plant == "Lemboglossum" or plant == 'Urginea':
         print 'skipped'
         return 'skipped'
     else:
@@ -39,7 +39,7 @@ def loadPage(plant):
             else:
                 paragraph = 'no paragraph in the body content'
         else:
-            paragraph = 'no body content div'
+            paragraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam placerat arcu eget interdum mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam at bibendum urna, vitae venenatis turpis. Curabitur semper sem vitae lacinia hendrerit. '
 
 
         # image
@@ -64,7 +64,7 @@ def loadPage(plant):
             elif orderItalic:
                 order = orderItalic.contents[0]
             else:
-                genus = 'none'
+                order = 'none'
         else:
             order = 'none'
 
@@ -142,7 +142,7 @@ csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image', 'p
 skipplants = ['Bursaria']
 
 # for testing
-plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
+#plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
 
 for plant in plants:
     csvData.append(loadPage(plant))
