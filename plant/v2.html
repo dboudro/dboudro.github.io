@@ -148,8 +148,16 @@ sent lobortis tincidunt lorem, ut fermentum ligula </p>
 var viz = document.getElementsByTagName('svg')[0];
 console.log(viz);
 document.getElementById('dendrogram-container').appendChild(viz);
-var output = d3.csv("plantOutput.csv")
-    .get(function(error, rows) { console.log(rows); });
+var output = d3.csv("plantOutput.csv", function(d) {
+    return {
+      id: d.id
+    };
+}, function getRows(error, rows) {
+  console.log(rows);
+});
 
-var parsed = d3.csv.parse(output);
+
+
+
+
 </script>
