@@ -70,7 +70,7 @@ position: relative;
 #soil-ph-container {
   float: right;
 }
-#argemone {
+#plant-picture {
   width: 30vw;
   display: block;
   padding-bottom: 8px;
@@ -117,15 +117,15 @@ position: relative;
 
 </div>
 <div id="left-page-container">
-  <img src="img/argemone.jpg" id="argemone"/>
-  <h1> Oregano </h1>
-  <h2> Origanum Vulgare </h2>
+  <img src="img/argemone.jpg" id="plant-picture"/>
+  <h1 id="common-name"> Oregano </h1>
+  <h2 id="scientific-name"> Origanum Vulgare </h2>
 
 </div>
 
 <div id="right-page-container">
 <h2> DESCRIPTION </h2>
-<p> Oregano (scientific name Origanum vulgare) is a common species of Origanum, a genus of the mint family (Lamiaceae). It is native to temperate western and southwestern Eurasia and the Mediterranean region.
+<p id="plant-description"> Oregano (scientific name Origanum vulgare) is a common species of Origanum, a genus of the mint family (Lamiaceae). It is native to temperate western and southwestern Eurasia and the Mediterranean region.
 Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with opposite leaves 1–4 cm (0.39–1.57 in) long. Oregano will grow in a pH range between 6.0 (mildly acidic) and 9.0 (strongly alkaline),
  with a preferred range between 6.0 and 8.0. The flowers are purple, 3–4 mm (0.12–0.16 in) long, produced in erect spikes. It is sometimes called wild marjoram, and its close relative O. majorana is known as sweet marjoram.
 </p>
@@ -150,11 +150,45 @@ console.log(viz);
 document.getElementById('dendrogram-container').appendChild(viz);
 
 /* Parsing CSV */
-var outputStore;
+var csvData;
+var plantID;
+var plantName ;
+var plantImg;
+var plantDescription ;
+// taxonomy variables
+var plantOrder;
+var plantFamily;
+var plantGenus;
+var plantSpecies;
 d3.csv("plantOutput.csv", function getRows(error, rows) {
-  console.log(rows);
-  outputStore = rows;
+  console.log('parsing csv');
+  csvData = rows;
+  var plantID = csvData[0].id;
+  var plantName = csvData[0].name;
+  var plantImg = csvData[0].paragraph;
+  var plantDescription = csvData[0].paragraph;
+  // taxonomy variables
+  var plantOrder = csvData[0].order;
+  var plantFamily = csvData[0].family;
+  var plantGenus = csvData[0].genus;
+  var plantSpecies = csvData[0].species;
+
+  var commonName = document.getElementById('common-name');
+  commonName.innerHTML = plantName;
+  var scientificName = document.getElementById('scientific-name');
+  scientificName.innerHTML = plantSpecies;
+  var plantPicture = document.getElementById('plant-picture');
+  plantPicture.setAttribute("src", plantImg);
+
+
+
 });
+
+
+/* generating page data from CSV
+id,name,order,family,genus,species,image,paragraph  */
+
+
 
 
 
