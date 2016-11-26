@@ -150,12 +150,10 @@ console.log(viz);
 document.getElementById('dendrogram-container').appendChild(viz);
 
 /* Parsing CSV */
-var output = d3.csv("plantOutput.csv", function(d) {
-    return {
-      id: d.id
-    };
-}, function getRows(error, rows) {
+var outputStore;
+d3.csv("plantOutput.csv", function getRows(error, rows) {
   console.log(rows);
+  outputStore = rows;
 });
 
 
