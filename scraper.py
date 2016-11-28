@@ -137,7 +137,7 @@ def loadPage(plant):
 
 csvData = []
 #header
-csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image', 'paragraph'])
+csvData.append(['id', 'name', 'scientific', 'order', 'family', 'genus', 'species', 'image', 'paragraph'])
 
 # list of plants to skip due to irregular formatting
 skipplants = ['Bursaria']
