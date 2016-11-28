@@ -7,7 +7,6 @@ counter = 0
 
 allPlants = wikipedia.page("List_of_garden_plants")
 soup = BeautifulSoup(allPlants.html(), 'html.parser')
-
 ## if the link is red
 ## if the link title contains the word page does not exist
 
@@ -28,19 +27,8 @@ def loadPage(plant):
         counter += 1
         plantPage = wikipedia.page(plant)
         soup = BeautifulSoup(plantPage.html(), 'html.parser')
+        # print soup
         taxonomy = soup.find(title='Taxonomy (biology)')
-
-        # intro paragraph
-        bodyContent = soup.find('div', class_='mw-body-content')
-        if bodyContent:
-            paragraphTag = bodyContent.find("p")
-            if paragraphTag:
-                paragraph = paragraphTag.contents[0]
-            else:
-                paragraph = 'no paragraph in the body content'
-        else:
-            paragraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam placerat arcu eget interdum mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam at bibendum urna, vitae venenatis turpis. Curabitur semper sem vitae lacinia hendrerit. '
-
 
         # image
         imageSpan = soup.find("a", class_="image")
@@ -53,6 +41,17 @@ def loadPage(plant):
         else:
             image = 'none'
 
+        # intro paragraph
+        bodyContent = soup.find('p')
+        if bodyContent:
+            secondP = bodyContent.next_sibling
+            if secondP:
+                print secondP
+                paragraph = secondP
+            else:
+                paragraph = 'there are not 2 paragraphs'
+        else:
+            paragraph = 'there is not a paragraph'
 
         #order
         orderSpan = soup.find("span", class_="order")
@@ -130,6 +129,8 @@ def loadPage(plant):
 
         #common name (might not scale)
         common = soup.find('th')
+
+
         return ['myid', plant.encode('utf-8'), scientific.encode('utf-8'),
         order.encode('utf-8'), family.encode('utf-8'), genus.encode('utf-8'),
         species.encode('utf-8'), image.encode('utf-8'),paragraph.encode('utf-8')]
@@ -142,7 +143,7 @@ csvData.append(['id', 'name', 'order', 'family', 'genus', 'species', 'image', 'p
 skipplants = ['Bursaria']
 
 # for testing
-#plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
+plants = ['Adonis', 'Adromischus', 'Aechmea', 'Aegopodium', 'Aeonium']
 
 for plant in plants:
     csvData.append(loadPage(plant))
