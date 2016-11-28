@@ -44,7 +44,7 @@ def loadPage(plant):
         # intro paragraph
         bodyContent = soup.find('p')
         if bodyContent:
-            secondP = bodyContent.next_sibling
+            secondP = bodyContent
             if secondP:
                 print secondP
                 paragraph = secondP
