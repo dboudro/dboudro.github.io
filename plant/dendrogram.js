@@ -18,8 +18,8 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("flare.json", function(error, flare) {
-  if (error) throw error;
+flare = {"name": "order","children": [{"name": "family","children": [{"name": "genus", "size": 1732}]}]}
+
 
   root = flare;
   root.x0 = height / 2;
@@ -35,7 +35,6 @@ d3.json("flare.json", function(error, flare) {
 
   root.children.forEach(collapse);
   update(root);
-});
 
 d3.select(self.frameElement).style("height", "800px");
 
