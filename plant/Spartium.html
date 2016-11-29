@@ -150,15 +150,15 @@ var plantSpecies;
 d3.csv("plantOutput.csv", function getRows(error, rows) {
   console.log('parsing csv');
   csvData = rows;
-  var plantID = csvData[0].id;
-  var plantName = csvData[0].name;
-  var plantImg = csvData[0].image;
-  var plantDescription = csvData[0].paragraph;
+  var plantID = csvData[1801].id;
+  var plantName = csvData[1801].name;
+  var plantImg = csvData[1801].image;
+  var plantDescription = csvData[1801].paragraph;
   // taxonomy variables
-  var plantOrder = csvData[0].order;
-  var plantFamily = csvData[0].family;
-  var plantGenus = csvData[0].genus;
-  var plantSpecies = csvData[0].species;
+  var plantOrder = csvData[1801].order;
+  var plantFamily = csvData[1801].family;
+  var plantGenus = csvData[1801].genus;
+  var plantSpecies = csvData[1801].species;
   var commonName = document.getElementById('common-name');
   commonName.innerHTML = plantName;
   var scientificName = document.getElementById('scientific-name');
