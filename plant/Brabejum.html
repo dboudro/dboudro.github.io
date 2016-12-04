@@ -275,6 +275,7 @@ function click(d) {
 
 
 <script>
+/* transfer information from
 var viz = document.getElementsByTagName('svg')[0];
 console.log(viz);
 document.getElementById('dendrogram-container').appendChild(viz);
@@ -310,7 +311,14 @@ d3.csv("plantOutput.csv", function(error, rows) {
   var plantParagraph = document.getElementById('plant-description');
   plantParagraph.innerHTML = plantDescription
 
-  // draw dendrogram function
+  // create a list of all plantNames
+  var plantNames = [];
+    for (i = 0; i < csvData.length; i++) {
+      plantNames.push(csvData[i].name);
+    }
+
+  // draw dendrogram function Todo
+
 
 });
 /* generating page data from CSV
