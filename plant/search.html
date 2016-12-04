@@ -7,8 +7,10 @@
   body {
     margin: 30vh 6vw;
     background-image: url("./img/homepage-bg.jpg");
-    background-size: 100vw 100vh;
-   background-repeat: no-repeat;
+    background-size: 120vw 140vh;
+    background-repeat: no-repeat;
+    font-size: 14px;
+    font-family: courier;
   }
   @font-face {
       font-family: bebas;
@@ -26,7 +28,7 @@
     font-family: bebas-bold;
     font-size: 18px;
     margin: 0;
-    padding: 0 0 4px 0;
+    padding: 0 0 4px 4px;
     display: table;
   }
 
@@ -35,17 +37,17 @@
     font-size: 18px;
     border: 0px solid purple;
     margin: 0;
-    padding: 0 0 8px 0;
+    padding: 0 0 8px 4px;
     display: table;
   }
   input {
+    padding-left: 4px;
     width: 30vw;
     height: 60px;
-    font-size: 20px;
-    font-family: courier;
     display: table;
-    outline: 2px solid #DDD;
+    border: 2px solid #DDD;
     color: #CCC;
+    outline: 0px solid red;
   }
   p {
     font-family: courier;
@@ -53,18 +55,34 @@
     float: left;
   }
   a {
-        color: black;
+    color: black;
+    padding-left: 4px;
+    text-decoration: underline;
+  }
+  #search-item {
+    padding-left: 4px;
+    background-color: white;
+    width: 30vw;
+    height: 48px;
+    border: 1px solid orange;
+    font-size: 12px
+    position: fixed;
   }
   </style>
 </head>
 <body>
   <h1> Plant Encylopedia </h1>
   <h2> an online cultivation manual </h2>
-  <input value="search coming soon" type="text"></input>
+  <input placeholder="search coming soon" type="text"></input>
+
   <p> <a target="_blank" href="./Habranthus.html">Page 1</a>
     <a target="_blank" href="./Brabejum.html">Page 2</a>
     <a target="_blank" href="./Spartium.html">Page 3</a>
   </p>
+
+  <div id="search-item">
+    <p> Lavandula </p>
+</div>
 
 
 </body>

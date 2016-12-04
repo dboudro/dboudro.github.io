@@ -120,10 +120,7 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 <h2> TAXONOMY</h2>
 <div id="dendrogram-container"> </div>
 <h2>Growing Info </h2>
-<p>Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Proin ut mattis nibh. Curabitur ut
-felis eu libero commodo mollis nec et mauris. Prae-
-sent lobortis tincidunt lorem, ut fermentum ligula </p>
+<input placeholder="search coming soon" type="text"></input>
 <!-- <h2> Height </h2>
 <p> 20–80 cm (7.9–31.5 in) tall </p> -->
 <!-- <div id="soil-ph-container">
@@ -274,6 +271,9 @@ function click(d) {
 
 
 </script>
+
+
+
 <script>
 var viz = document.getElementsByTagName('svg')[0];
 console.log(viz);
@@ -289,7 +289,7 @@ var plantOrder;
 var plantFamily;
 var plantGenus;
 var plantSpecies;
-d3.csv("plantOutput.csv", function getRows(error, rows) {
+d3.csv("plantOutput.csv", function(error, rows) {
   console.log('parsing csv');
   csvData = rows;
   var plantID = csvData[341].id;
@@ -309,6 +309,8 @@ d3.csv("plantOutput.csv", function getRows(error, rows) {
   plantPicture.setAttribute("src", plantImg);
   var plantParagraph = document.getElementById('plant-description');
   plantParagraph.innerHTML = plantDescription
+
+  // draw dendrogram function
 
 });
 /* generating page data from CSV
