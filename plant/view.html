@@ -151,7 +151,7 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 <div id="dendrogram-container"> </div>
 <h2>Search </h2>
 <div id="search-box">
-<input placeholder="search coming soon" type="text"></input>
+<input placeholder="search for a plant" type="text"></input>
 </div>
 <!-- <h2> Height </h2>
 <p> 20–80 cm (7.9–31.5 in) tall </p> -->
@@ -160,8 +160,32 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 <img src="http://placehold.it/100x30" id="soil-ph"/> -->
 </div>
 <script src="https://d3js.org/d3.v3.min.js"></script>
+
+
+
 <script>
+/* transfer information from
+var viz = document.getElementsByTagName('svg')[0];
+console.log(viz);
+document.getElementById('dendrogram-container').appendChild(viz);
+/* Parsing CSV */
+var csvData;
+var plantID;
+var plantName;
+var plantImg;
+var plantDescription ;
+
+// taxonomy variables
+var plantOrder;
+var plantFamily;
+var plantGenus;
+var plantSpecies;
+// all plant Names for search
+var plantNames = [];
+
 /* Dendrogram */
+function drawDendrogram(order, family, genus, species) {
+
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = (document.documentElement.clientWidth / 2) - margin.right - margin.left,
     height = 300 - margin.top - margin.bottom;
@@ -182,7 +206,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-flare = {"name": "order","children": [{"name": "family","children": [{"name": "genus", "size": 1732}]}]}
+flare = {"name": plantOrder,"children": [{"name": plantFamily,"children": [{"name": plantGenus, "size": 1732}]}]}
 
 
   root = flare;
@@ -300,31 +324,7 @@ function click(d) {
   }
   update(d);
 }
-
-
-</script>
-
-
-
-<script>
-/* transfer information from
-var viz = document.getElementsByTagName('svg')[0];
-console.log(viz);
-document.getElementById('dendrogram-container').appendChild(viz);
-/* Parsing CSV */
-var csvData;
-var plantID;
-var plantName ;
-var plantImg;
-var plantDescription ;
-
-// taxonomy variables
-var plantOrder;
-var plantFamily;
-var plantGenus;
-var plantSpecies;
-// all plant Names for search
-var plantNames = [];
+}
 function drawFromCSV(plantIndex) {
   d3.csv("plantOutput.csv", function(error, rows) {
     console.log('parsing csv');
@@ -351,10 +351,11 @@ function drawFromCSV(plantIndex) {
       for (i = 0; i < csvData.length; i++) {
         plantNames.push(csvData[i].name);
       }
-    // draw dendrogram function Todo
+    drawDendrogram(plantOrder, plantFamily, plantGenus, plantSpecies);
   });
 }
 drawFromCSV(341)
+
 
 // the plant within csvdata which data should be pulled for
 var plantIndex = 341;
