@@ -108,6 +108,15 @@ input {
   color: #CCC;
   outline: 0px solid red;
 }
+#search-item {
+  padding-left: 4px;
+  background-color: white;
+  width: 30vw;
+  height: 48px;
+  border: 1px solid orange;
+  font-size: 12px
+  position: fixed;
+}
 </style>
 <body>
   <div id="content-container">
@@ -129,7 +138,9 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 <h2> TAXONOMY</h2>
 <div id="dendrogram-container"> </div>
 <h2>Growing Info </h2>
+<div id="search-box">
 <input placeholder="search coming soon" type="text"></input>
+</div>
 <!-- <h2> Height </h2>
 <p> 20–80 cm (7.9–31.5 in) tall </p> -->
 <!-- <div id="soil-ph-container">
@@ -342,8 +353,12 @@ d3.csv("plantOutput.csv", function(error, rows) {
 var searchvalue = document.getElementsByTagName("input").value;
 var search = document.body.getElementsByTagName('input')[0];
 setInterval(function() {
-  if (search.value === "Brabejum") {
-     console.log('plant matches the search!');
+  if (plantNames.indexOf(search.value) != -1 && document.getElementById('search-item') === null) {
+     var searchitem = document.createElement('div');
+     var searchbox = document.getElementById('search-box');
+     searchbox.appendChild(searchitem);
+     searchitem.setAttribute('id', 'search-item')
+     searchitem.innerHTML = search.value;
    }
 }, 1000)
 
