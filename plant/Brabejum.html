@@ -99,6 +99,15 @@ position: relative;
 #soil-ph {
   float: right;
 }
+input {
+  padding-left: 4px;
+  width: 30vw;
+  height: 60px;
+  display: table;
+  border: 2px solid #DDD;
+  color: #CCC;
+  outline: 0px solid red;
+}
 </style>
 <body>
   <div id="content-container">
@@ -285,24 +294,28 @@ var plantID;
 var plantName ;
 var plantImg;
 var plantDescription ;
+
 // taxonomy variables
 var plantOrder;
 var plantFamily;
 var plantGenus;
 var plantSpecies;
+// all plant Names for search
+var plantNames = [];
 d3.csv("plantOutput.csv", function(error, rows) {
   console.log('parsing csv');
   csvData = rows;
-  var plantID = csvData[341].id;
-  var plantName = csvData[341].name;
-  var plantImg = csvData[341].image;
-  var plantDescription = csvData[341].paragraph;
+  plantID = csvData[341].id;
+  plantName = csvData[341].name;
+  plantImg = csvData[341].image;
+  plantDescription = csvData[341].paragraph;
+
   // taxonomy variables
-  var plantOrder = csvData[341].order;
-  var plantFamily = csvData[341].family;
-  var plantGenus = csvData[341].genus;
-  var plantSpecies = csvData[341].species;
-  var commonName = document.getElementById('common-name');
+  plantOrder = csvData[341].order;
+  plantFamily = csvData[341].family;
+  plantGenus = csvData[341].genus;
+  plantSpecies = csvData[341].species;
+  commonName = document.getElementById('common-name');
   commonName.innerHTML = plantName;
   var scientificName = document.getElementById('scientific-name');
   scientificName.innerHTML = plantSpecies;
@@ -311,16 +324,29 @@ d3.csv("plantOutput.csv", function(error, rows) {
   var plantParagraph = document.getElementById('plant-description');
   plantParagraph.innerHTML = plantDescription
 
+
   // create a list of all plantNames
-  var plantNames = [];
     for (i = 0; i < csvData.length; i++) {
       plantNames.push(csvData[i].name);
     }
 
   // draw dendrogram function Todo
-
-
 });
+
+// // search value
+
+// if (plantNames.forEach(function(plant) { searchvalue === plant})) {
+//   console.log('plant matches the search!');
+// }
+
+var searchvalue = document.getElementsByTagName("input").value;
+var search = document.body.getElementsByTagName('input')[0];
+setInterval(function() {
+  if (search.value === "Brabejum") {
+     console.log('plant matches the search!');
+   }
+}, 1000)
+
 /* generating page data from CSV
 id,name,order,family,genus,species,image,paragraph  */
 </script>
