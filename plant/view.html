@@ -39,6 +39,7 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: courier;
 }
 h1 {
   font-family: bebas-bold;
@@ -111,15 +112,22 @@ input {
   border: 2px solid #DDD;
   color: #CCC;
   outline: 0px solid red;
+  font-family: courier;
 }
 #search-item {
   padding-left: 4px;
+  padding-top: 20px;
+  padding-right: 3px;
   background-color: white;
   width: 30vw;
-  height: 48px;
-  border: 1px solid orange;
-  font-size: 12px
-  position: fixed;
+  height: 36px;
+  border: 1px solid #DDD;
+  text-decoration: underline;
+  font-size: 12px;
+}
+#search-item:hover {
+  cursor: pointer;
+  background-color: #EEE;
 }
 </style>
 <body>
@@ -317,6 +325,7 @@ var plantGenus;
 var plantSpecies;
 // all plant Names for search
 var plantNames = [];
+
 d3.csv("plantOutput.csv", function(error, rows) {
   console.log('parsing csv');
   csvData = rows;
@@ -348,18 +357,15 @@ d3.csv("plantOutput.csv", function(error, rows) {
   // draw dendrogram function Todo
 });
 
-// // search value
-
-// if (plantNames.forEach(function(plant) { searchvalue === plant})) {
-//   console.log('plant matches the search!');
-// }
-
+// the plant within csvdata which data should be pulled for
+var plantIndex = 341;
 var searchvalue = document.getElementsByTagName("input").value;
 var search = document.body.getElementsByTagName('input')[0];
 setInterval(function() {
   if (plantNames.indexOf(search.value) != -1 && document.getElementById('search-item') === null) {
      var searchitem = document.createElement('div');
      var searchbox = document.getElementById('search-box');
+     plantIndex = plantNames.indexOf(search.value));
      searchbox.appendChild(searchitem);
      searchitem.setAttribute('id', 'search-item')
      searchitem.innerHTML = search.value;
