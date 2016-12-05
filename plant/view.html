@@ -59,7 +59,7 @@ p {
   font-size: 12px;
 }
 #dendrogram-container {
-  width: 51vw;
+  width: 41vw;
   height: 320px;
   background-color: #FFF;
   margin-left: -4vw;
@@ -160,14 +160,8 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 <img src="http://placehold.it/100x30" id="soil-ph"/> -->
 </div>
 <script src="https://d3js.org/d3.v3.min.js"></script>
-
-
-
 <script>
-/* transfer information from
-var viz = document.getElementsByTagName('svg')[0];
-console.log(viz);
-document.getElementById('dendrogram-container').appendChild(viz);
+
 /* Parsing CSV */
 var csvData;
 var plantID;
@@ -352,6 +346,8 @@ function drawFromCSV(plantIndex) {
         plantNames.push(csvData[i].name);
       }
     drawDendrogram(plantOrder, plantFamily, plantGenus, plantSpecies);
+    var viz = document.getElementsByTagName('svg')[0];
+    document.getElementById('dendrogram-container').appendChild(viz);
   });
 }
 drawFromCSV(341)
