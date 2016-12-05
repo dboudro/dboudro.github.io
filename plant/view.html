@@ -325,37 +325,36 @@ var plantGenus;
 var plantSpecies;
 // all plant Names for search
 var plantNames = [];
+function drawFromCSV(plantIndex) {
+  d3.csv("plantOutput.csv", function(error, rows) {
+    console.log('parsing csv');
+    csvData = rows;
+    plantID = csvData[plantIndex].id;
+    plantName = csvData[plantIndex].name;
+    plantImg = csvData[plantIndex].image;
+    plantDescription = csvData[plantIndex].paragraph;
 
-d3.csv("plantOutput.csv", function(error, rows) {
-  console.log('parsing csv');
-  csvData = rows;
-  plantID = csvData[341].id;
-  plantName = csvData[341].name;
-  plantImg = csvData[341].image;
-  plantDescription = csvData[341].paragraph;
-
-  // taxonomy variables
-  plantOrder = csvData[341].order;
-  plantFamily = csvData[341].family;
-  plantGenus = csvData[341].genus;
-  plantSpecies = csvData[341].species;
-  commonName = document.getElementById('common-name');
-  commonName.innerHTML = plantName;
-  var scientificName = document.getElementById('scientific-name');
-  scientificName.innerHTML = plantSpecies;
-  var plantPicture = document.getElementById('plant-picture');
-  plantPicture.setAttribute("src", plantImg);
-  var plantParagraph = document.getElementById('plant-description');
-  plantParagraph.innerHTML = plantDescription
-
-
-  // create a list of all plantNames
-    for (i = 0; i < csvData.length; i++) {
-      plantNames.push(csvData[i].name);
-    }
-
-  // draw dendrogram function Todo
-});
+    // taxonomy variables
+    plantOrder = csvData[plantIndex].order;
+    plantFamily = csvData[plantIndex].family;
+    plantGenus = csvData[plantIndex].genus;
+    plantSpecies = csvData[plantIndex].species;
+    commonName = document.getElementById('common-name');
+    commonName.innerHTML = plantName;
+    var scientificName = document.getElementById('scientific-name');
+    scientificName.innerHTML = plantSpecies;
+    var plantPicture = document.getElementById('plant-picture');
+    plantPicture.setAttribute("src", plantImg);
+    var plantParagraph = document.getElementById('plant-description');
+    plantParagraph.innerHTML = plantDescription
+    // create a list of all plantNames
+      for (i = 0; i < csvData.length; i++) {
+        plantNames.push(csvData[i].name);
+      }
+    // draw dendrogram function Todo
+  });
+}
+drawFromCSV(341)
 
 // the plant within csvdata which data should be pulled for
 var plantIndex = 341;
@@ -365,10 +364,11 @@ setInterval(function() {
   if (plantNames.indexOf(search.value) != -1 && document.getElementById('search-item') === null) {
      var searchitem = document.createElement('div');
      var searchbox = document.getElementById('search-box');
-     plantIndex = plantNames.indexOf(search.value));
+     plantIndex = plantNames.indexOf(search.value);
      searchbox.appendChild(searchitem);
      searchitem.setAttribute('id', 'search-item')
      searchitem.innerHTML = search.value;
+     drawFromCSV(plantIndex);
    } else if (document.getElementById('search-item') && plantNames.indexOf(search.value) == -1) {
      var searchbox = document.getElementById('search-box');
      var searchitem = document.getElementById('search-item');
