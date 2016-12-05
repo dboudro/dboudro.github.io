@@ -4,6 +4,10 @@
   <link rel="icon" href="../favicon.png">
 </head>
 <style>
+::selection {
+  background-color: #A5D6A7;
+}
+
 @font-face {
     font-family: bebas;
     src: url(font/BebasNeueBook.otf);
@@ -137,7 +141,7 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 </p>
 <h2> TAXONOMY</h2>
 <div id="dendrogram-container"> </div>
-<h2>Growing Info </h2>
+<h2>Search </h2>
 <div id="search-box">
 <input placeholder="search coming soon" type="text"></input>
 </div>
@@ -359,6 +363,10 @@ setInterval(function() {
      searchbox.appendChild(searchitem);
      searchitem.setAttribute('id', 'search-item')
      searchitem.innerHTML = search.value;
+   } else if (document.getElementById('search-item') && plantNames.indexOf(search.value) == -1) {
+     var searchbox = document.getElementById('search-box');
+     var searchitem = document.getElementById('search-item');
+     searchbox.removeChild(searchitem)
    }
 }, 1000)
 
