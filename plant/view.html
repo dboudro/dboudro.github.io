@@ -60,7 +60,7 @@ p {
 }
 #dendrogram-container {
   width: 41vw;
-  height: 320px;
+  height: 220px;
   background-color: #FFF;
   margin-left: -4vw;
   border: 0px solid red;
@@ -152,6 +152,7 @@ Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with 
 <h2>Search </h2>
 <div id="search-box">
 <input placeholder="search for a plant" type="text"></input>
+<p> ex: Spartium, Lavandula, Mentha
 </div>
 <!-- <h2> Height </h2>
 <p> 20–80 cm (7.9–31.5 in) tall </p> -->
@@ -182,7 +183,7 @@ function drawDendrogram(order, family, genus, species) {
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = (document.documentElement.clientWidth / 2) - margin.right - margin.left,
-    height = 300 - margin.top - margin.bottom;
+    height = 200 - margin.top - margin.bottom;
 
 var i = 0,
     duration = 750,
@@ -372,6 +373,10 @@ setInterval(function() {
      searchbox.removeChild(searchitem)
    }
 }, 1000)
+
+var test = "spartium"
+var testsmall = "spa";
+
 
 /* generating page data from CSV
 id,name,order,family,genus,species,image,paragraph  */
