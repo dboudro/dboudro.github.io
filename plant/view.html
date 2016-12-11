@@ -40,6 +40,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: courier;
+  height: 200vw;
 }
 h1 {
   font-family: bebas-bold;
@@ -120,7 +121,7 @@ input {
   padding-right: 3px;
   background-color: white;
   width: 30vw;
-  height: 36px;
+  height: 30px;
   border: 1px solid #DDD;
   text-decoration: underline;
   font-size: 12px;
@@ -143,7 +144,6 @@ input {
 </style>
 <body>
   <div id="content-container">
-
 </div>
 <div id="left-page-container">
   <img src="img/argemone.jpg" id="plant-picture"/>
@@ -373,14 +373,27 @@ var searchitems = document.body.getElementsByClassName('search-item');
 function plantMatch(plant) {
   return plant.includes(search.value)
 }
+/* Delete the .search-item div's */
+function deleteBoxes() {
+  while(searchitems[0]) {
+    console.log('deleting search boxes')
+    var tempsearch = document.getElementById('search-box');
+  tempsearch.removeChild(searchitems[0]);
+  }
+}
 
-/* function for autocomplete */
-search.addEventListener("click", function(event) {
-  if (search.value.length > 2) {
+/* Search Bar Event :: Autocomplete */
+search.addEventListener("keydown", function(event) {
+  if (event.keyCode === 8 || event.keyCode === 46) {
+    deleteBoxes();
+  }
+  if (search.value.length === 1) {
+    deleteBoxes()
+  }
+  if (search.value.length >= 2) {
+    console.log(event.keyCode)
     /* while there are search-item boxes, delete the first one */
-    while(searchitems[0]) {
-      searchitems.parentNode.removeChild(searchitems[0]);
-    }
+    deleteBoxes()
   var plantscopy = plantNames;
   var plantMatches = plantscopy.filter(plantMatch);
   console.log(plantMatches)
