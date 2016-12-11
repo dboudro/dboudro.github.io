@@ -125,6 +125,17 @@ input {
   text-decoration: underline;
   font-size: 12px;
 }
+.search-item {
+  padding-left: 4px;
+  padding-top: 20px;
+  padding-right: 3px;
+  background-color: white;
+  width: 30vw;
+  height: 36px;
+  border: 1px solid #DDD;
+  text-decoration: underline;
+  font-size: 12px;
+}
 #search-item:hover {
   cursor: pointer;
   background-color: #EEE;
@@ -358,24 +369,41 @@ drawFromCSV(341)
 var plantIndex = 341;
 var searchvalue = document.getElementsByTagName("input").value;
 var search = document.body.getElementsByTagName('input')[0];
-setInterval(function() {
-  if (plantNames.indexOf(search.value) != -1 && document.getElementById('search-item') === null) {
-     var searchitem = document.createElement('div');
-     var searchbox = document.getElementById('search-box');
-     plantIndex = plantNames.indexOf(search.value);
-     searchbox.appendChild(searchitem);
-     searchitem.setAttribute('id', 'search-item')
-     searchitem.innerHTML = search.value;
-     drawFromCSV(plantIndex);
-   } else if (document.getElementById('search-item') && plantNames.indexOf(search.value) == -1) {
-     var searchbox = document.getElementById('search-box');
-     var searchitem = document.getElementById('search-item');
-     searchbox.removeChild(searchitem)
-   }
+var searchitems = document.body.getElementsByClassName('search-item');
+function plantMatch(plant) {
+  return plant.includes(search.value)
+}
+
+/* function for autocomplete */
+search.addEventListener("click", function(event) {
+  if (search.value.length > 2) {
+    /* while there are search-item boxes, delete the first one */
+    while(searchitems[0]) {
+      searchitems.parentNode.removeChild(searchitems[0]);
+    }
+  var plantscopy = plantNames;
+  var plantMatches = plantscopy.filter(plantMatch);
+  console.log(plantMatches)
+    for(i=0; i < plantMatches.length; i++) {
+      var searchitem = document.createElement('div');
+      var searchbox = document.getElementById('search-box');
+
+      plantIndex = plantMatches[i]
+      searchbox.appendChild(searchitem);
+      searchitem.setAttribute('class', 'search-item')
+      searchitem.innerHTML = plantMatches[i];
+    }
+  }
 }, 1000)
 
-var test = "spartium"
-var testsmall = "spa";
+// search.addEventListener("click", function(event) {
+//      drawFromCSV(plantIndex);
+// })
+
+
+
+
+
 
 
 /* generating page data from CSV
