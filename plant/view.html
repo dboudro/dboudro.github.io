@@ -44,7 +44,7 @@ body {
 }
 h1 {
   font-family: bebas-bold;
-  font-size: 18px;
+  font-size: 26px;
   margin: 0;
   padding: 0 0 4px 0;
 }
@@ -52,8 +52,15 @@ h2 {
   font-family: bebas;
   font-size: 18px;
   border: 0px solid purple;
-  margin: 0;
-  padding: 0 0 8px 0;
+  margin-bottom: 0;
+  display: inline-block;
+}
+#scientific-name {
+  margin-top: 0px
+}
+#taxonomy {
+  margin-top: 80px;
+  margin-bottom: -80px;
 }
 p {
   font-family: courier;
@@ -96,7 +103,7 @@ position: relative;
   width: 48vw;
   float: left;
 }
-#pic-container p, h2 {
+#pic-container p {
   display: inline;
 }
 #soil-ph-title {
@@ -158,18 +165,13 @@ input {
 Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with opposite leaves 1–4 cm (0.39–1.57 in) long. Oregano will grow in a pH range between 6.0 (mildly acidic) and 9.0 (strongly alkaline),
  with a preferred range between 6.0 and 8.0. The flowers are purple, 3–4 mm (0.12–0.16 in) long, produced in erect spikes. It is sometimes called wild marjoram, and its close relative O. majorana is known as sweet marjoram.
 </p>
-<h2> TAXONOMY</h2>
+<h2 id="taxonomy"> TAXONOMY</h2>
 <div id="dendrogram-container"> </div>
 <h2>Search </h2>
 <div id="search-box">
 <input placeholder="search for a plant" type="text"></input>
 <p> ex: Spartium, Lavandula, Mentha
 </div>
-<!-- <h2> Height </h2>
-<p> 20–80 cm (7.9–31.5 in) tall </p> -->
-<!-- <div id="soil-ph-container">
-<h2 id="soil-ph-title"> SOIL PH </h2>
-<img src="http://placehold.it/100x30" id="soil-ph"/> -->
 </div>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
