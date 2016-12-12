@@ -137,7 +137,7 @@ input {
   text-decoration: underline;
   font-size: 12px;
 }
-#search-item:hover {
+.search-item:hover {
   cursor: pointer;
   background-color: #EEE;
 }
@@ -189,7 +189,8 @@ var plantSpecies;
 // all plant Names for search
 var plantNames = [];
 
-/* Dendrogram */
+
+/* draw Dendrogram */
 function drawDendrogram(order, family, genus, species) {
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -357,9 +358,19 @@ function drawFromCSV(plantIndex) {
       for (i = 0; i < csvData.length; i++) {
         plantNames.push(csvData[i].name);
       }
+
+
     drawDendrogram(plantOrder, plantFamily, plantGenus, plantSpecies);
-    var viz = document.getElementsByTagName('svg')[0];
-    document.getElementById('dendrogram-container').appendChild(viz);
+    /* replace the old dendro with the new one.
+      places the svg into #dendrogram-container div */
+    function appendDendro() {
+      var dendroContainer = document.getElementById('dendrogram-container')
+      var viz = document.getElementsByTagName('svg')[0];
+      dendroContainer.appendChild(viz);
+    }
+    appendDendro();
+
+
   });
 }
 drawFromCSV(341)
@@ -382,7 +393,13 @@ function deleteBoxes() {
   }
 }
 
-/* Search Bar Event :: Autocomplete */
+function removeOldDendro() {
+  var dendroContainer = document.getElementById('dendrogram-container')
+  var oldSVG = document.getElementsByTagName('svg')[0];
+    dendroContainer.removeChild(oldSVG);
+}
+
+/* Search Bar Key Event :: Autocomplete */
 search.addEventListener("keydown", function(event) {
   if (event.keyCode === 8 || event.keyCode === 46) {
     deleteBoxes();
@@ -391,12 +408,11 @@ search.addEventListener("keydown", function(event) {
     deleteBoxes()
   }
   if (search.value.length >= 2) {
-    console.log(event.keyCode)
     /* while there are search-item boxes, delete the first one */
     deleteBoxes()
   var plantscopy = plantNames;
   var plantMatches = plantscopy.filter(plantMatch);
-  console.log(plantMatches)
+  // console.log(plantMatches)
     for(i=0; i < plantMatches.length; i++) {
       var searchitem = document.createElement('div');
       var searchbox = document.getElementById('search-box');
@@ -405,13 +421,18 @@ search.addEventListener("keydown", function(event) {
       searchbox.appendChild(searchitem);
       searchitem.setAttribute('class', 'search-item')
       searchitem.innerHTML = plantMatches[i];
+      searchitem.onclick=function() {
+        removeOldDendro();
+        drawFromCSV(plantNames.indexOf(plantIndex.toString()));
+        deleteBoxes();
+        var input = document.getElementsByTagName('input')[0];
+        input.value = "";
+      }
     }
   }
 }, 1000)
 
-// search.addEventListener("click", function(event) {
-//      drawFromCSV(plantIndex);
-// })
+
 
 
 
