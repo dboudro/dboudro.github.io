@@ -15,7 +15,7 @@ underline #E8A561
   }
   @font-face {
       font-family: Din Bold;
-      src: url('/../fonts/D-DIN-bold.otf');
+      src: url('/../fonts/D-DIN-Bold.otf');
     }
 *::selection {
   background-color: #F4F1F0;
@@ -50,7 +50,7 @@ body {
 }
 #content-container {
     display: block;
-    margin: 16vh 0px 6vh 16px;
+    margin: 8vh 0px 6vh 16px;
 }
 
 #footer {
@@ -69,8 +69,6 @@ body {
     cursor: pointer;
 }
 #experience-list {
-    font-size: 16px;
-    line-height: 20px;
 }
 h1 {
     font-size: 2em;
@@ -122,10 +120,11 @@ span.font-weight300 {
   font-weight: 300;
 }
 span.tag {
-  background-color: #E2EFFC;
-  margin-left: 2px;
+  background-color: ##A8D1FB;
+  margin-left: 20px;
+  font-size: 26px;
   color: white;
-  padding: 1px 3px;
+  padding: 2px 4px;
 }
 span.newline {
   padding-left: 65px;
