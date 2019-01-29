@@ -13,6 +13,10 @@ underline #E8A561
     font-family: Din;
     src: url('/../fonts/D-DIN.otf');
   }
+  @font-face {
+      font-family: Din Bold;
+      src: url('/../fonts/D-DIN-bold.otf');
+    }
 *::selection {
   background-color: #F4F1F0;
 }
@@ -34,7 +38,7 @@ a.h-underlined {
   text-decoration: none;
 }
 a.h-underlined:hover {
-  border-bottom: 2px solid #54a0ff;
+  border-bottom: 2px solid #2e86de;
 }
 body {
   background-color: white;
@@ -53,19 +57,20 @@ body {
   margin-left: 16px;
 }
 .footer-button {
-  border: 1px solid #54a0ff;
-  color: #54a0ff;
+  border: 1px solid #2e86de;
+  color: #2e86de;
   font-weight: 400;
   padding: 5px;
   text-decoration: none;
 }
 .footer-button:hover {
-    background-color: #54a0ff;
+    background-color: #2e86de;
     color: white;
     cursor: pointer;
 }
 #experience-list {
     font-size: 16px;
+    line-height: 20px;
 }
 h1 {
     font-size: 2em;
@@ -76,7 +81,11 @@ h2 {
     font-size: 1.6em;
     font-weight: 300;
     padding: 2px 5px;
-    text-decoration: none;
+    text-
+    decoration: none;
+}
+h3 {
+  font-family: Din Bold;
 }
 .icon {
     display: table;
@@ -114,8 +123,9 @@ span.font-weight300 {
   font-weight: 300;
 }
 span.tag {
-  background-color: #48dbfb;
+  background-color: #2e86de;
   margin-left: 2px;
+  color: white;
   padding: 1px 3px;
 }
 span.newline {
