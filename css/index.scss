@@ -11,7 +11,7 @@ underline #E8A561
 
 @font-face {
     font-family: Din;
-    src: url('fonts/D-DIN.otf');
+    src: url('/../fonts/D-DIN.otf');
   }
 *::selection {
   background-color: #F4F1F0;
@@ -28,7 +28,7 @@ a.block:hover {
     padding: 2px 5px;
 }
 a.h-underlined {
-  color: #91592B;
+  color: black;
   font-weight: 400;
   padding-bottom: 1px;
   text-decoration: none;
@@ -37,8 +37,8 @@ a.h-underlined:hover {
   border-bottom: 2px solid #54a0ff;
 }
 body {
-  background-color: black;
-    color: white;
+  background-color: white;
+    color: black;
     font-family: "Din";
     font-size: 32px;
     font-weight: 200;
@@ -64,7 +64,7 @@ body {
     color: white;
     cursor: pointer;
 }
-.experience-list {
+#experience-list {
     font-size: 16px;
 }
 h1 {
